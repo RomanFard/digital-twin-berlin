@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Twin Berlin - Dashboard</title>
+    <link rel="stylesheet" href="/static/vendor/leaflet.css" />
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">🌐 Digital Twin Berlin &nbsp;·&nbsp; Amin Seifolahi Fard</div>
+        <div class="header-actions">
+            <span id="api-status" class="status-badge">⏳ Checking...</span>
+            <button id="btn-refresh" title="Refresh">🔄</button>
+            <button id="btn-dark" title="Dark Mode">🌙</button>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <section class="panel">
+                <h3>📚 Layers</h3>
+                <div id="layers-list" class="layers-list">
+                    <div class="loading">Loading...</div>
+                </div>
+            </section>
+<section class="panel">
+    <h3>📍 Zones</h3>
+    <div id="zones-list" class="zones-list">
+        <div class="loading">Loading...</div>
+    </div>
+    <button id="btn-draw-zone" class="btn-primary">+ Draw New Zone</button>
+    <button id="btn-cancel-draw" class="btn-secondary" style="display:none;">Cancel Drawing</button>
+</section>
+
+            <section class="panel">
+                <h3>🔍 Filters</h3>
+                <div class="filter-group">
+                    <label>Bezirk:</label>
+                    <select id="filter-bezirk">
+                        <option value="">All</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Art (Species):</label>
+                    <select id="filter-art">
+                        <option value="">All</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Limit:</label>
+                    <input type="number" id="filter-limit" value="500" min="10" max="1000" />
+                </div>
+<div class="filter-group">
+    <label>Street Name:</label>
+    <input type="text" id="filter-strname" placeholder="e.g. Paul-Lincke" />
+</div>
+                <button id="btn-apply-filters" class="btn-primary">Apply</button>
+                <button id="btn-reset-filters" class="btn-secondary">Reset</button>
+            </section>
+
+            <section class="panel">
+                <h3>📊 Statistics</h3>
+                <div id="stats-list" class="stats-list">
+                    <div class="loading">Loading...</div>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Map -->
+        <main class="map-container">
+            <div id="map"></div>
+            <div class="map-info">
+                <span id="visible-count">0 features visible</span>
+            </div>
+        </main>
+
+        <!-- Side Panel (Feature Details) -->
+        <aside id="detail-panel" class="detail-panel">
+            <div class="detail-header">
+                <h2 id="detail-title">Feature Details</h2>
+                <button id="detail-close" class="btn-close">✕</button>
+            </div>
+            <div id="detail-body" class="detail-body">
+                <p class="loading">Click on a feature to see details</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer / Table -->
+    <footer>
+        <div class="footer-header">
+            <h3>📋 Features Table</h3>
+            <span id="table-count">0 rows</span>
+        </div>
+        <div class="table-wrapper">
+            <table id="features-table">
+                <thead>
+                    <tr>
+                        <th>Feature ID</th>
+                        <th>Type</th>
+                        <th>Lon</th>
+                        <th>Lat</th>
+                        <th>Bezirk</th>
+                        <th>Species</th>
+                        <th>Diameter</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody id="features-tbody">
+                    <tr><td colspan="8" class="loading">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </footer>
+
+    <script src="/static/vendor/leaflet.js"></script>
+<script src="/static/vendor/turf.min.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>

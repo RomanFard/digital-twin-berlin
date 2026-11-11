@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Environment / Secrets
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+
+# Data (large files)
+*.gpkg
+*.gpkg-shm
+*.gpkg-wal
+data/
+
+# Unreal Engine (not part of this repo)
+Intermediate/
+Saved/
+DerivedDataCache/
+Binaries/
+Build/
