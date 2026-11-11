@@ -1,0 +1,20 @@
+### Health Check
+GET http://127.0.0.1:8001/health
+
+### Stats
+GET http://127.0.0.1:8001/api/stats
+
+### Active Zone Scene
+GET http://127.0.0.1:8001/api/zones/active/scene
+
+### AI Rule Explanation
+POST http://127.0.0.1:8001/api/rules/explain
+Content-Type: application/json
+
+{
+  "feature_id": "tree:test006",
+  "violation_type": "root_protection",
+  "species": "Linde",
+  "overlap_amount": 1.0,
+  "language": "de"
+}
